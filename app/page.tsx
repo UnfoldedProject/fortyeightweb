@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Clock, CheckCircle, Smartphone, Search, CreditCard, Shield } from "lucide-react"
+import LeadCaptureForm from "@/components/lead-capture-form"
 
 export default function Home() {
   return (
@@ -313,6 +314,19 @@ export default function Home() {
               </Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* Lead Capture Form Section */}
+      <section className="py-16 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2a4365] mb-4">Start Your Website Refresh</h2>
+            <p className="text-lg text-[#4a5568] max-w-2xl mx-auto">
+              Enter your details below and we'll get in touch to discuss your project.
+            </p>
+          </div>
+          <LeadCaptureForm />
         </div>
       </section>
     </main>
