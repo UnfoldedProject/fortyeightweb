@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description:
     "Affordable, mobile-optimized, SEO-ready websites delivered in just 48 hours. Book your 15-minute discovery call today and launch faster.",
   keywords:
-    "Website refresh, fast website design, mobile optimized websites, SEO website services, 48 hour website builds, business website sprint",
+    "Website refresh, fast website design, mobile optimized websites, SEO website services, 48 hour website builds, business website sprint, web development, no-code, automations, business websites, marketing funnels, Sean Williams, FortyEight Web",
   authors: [{ name: "Sean Williams | FortyEightWeb" }],
   openGraph: {
     title: "FortyEightWeb | 48-Hour Website Refresh Sprint",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     images: ["/canva-forty-eight-web-logo.png"],
   },
   icons: {
-    icon: "/canva-forty-eight-web-logo.png",
+    icon: "/forty-eight-web.ico",
   },
     generator: 'v0.dev'
 }
