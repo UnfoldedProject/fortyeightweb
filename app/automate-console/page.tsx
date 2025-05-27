@@ -8,6 +8,7 @@ export default function AutomateConsole() {
   const [prompt, setPrompt] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showConfirmation, setShowConfirmation] = useState(false)
+  const [responseOutput, setResponseOutput] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -15,6 +16,7 @@ export default function AutomateConsole() {
 
     setIsSubmitting(true)
     setShowConfirmation(false)
+    setResponseOutput("")
 
     try {
       const webhookUrl = `https://fortyeight.app.n8n.cloud/webhook/95109a76-ef08-463c-ae7a-28ad717bcf2e?prompt=${encodeURIComponent(
@@ -26,6 +28,14 @@ export default function AutomateConsole() {
       })
 
       if (response.ok) {
+        const data = await response.json()
+
+        // Extract and format the response output
+        if (data?.output?.steps && Array.isArray(data.output.steps)) {
+          const formattedOutput = data.output.steps.join("\n")
+          setResponseOutput(formattedOutput)
+        }
+
         setShowConfirmation(true)
         setPrompt("") // Auto-clear the input field
         setTimeout(() => setShowConfirmation(false), 5000) // Hide confirmation after 5 seconds
@@ -41,7 +51,10 @@ export default function AutomateConsole() {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-2xl mx-auto px-4">
         <div className="bg-white rounded-lg shadow-md p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">Automation Console</h1>
+          <div className="flex items-center justify-center mb-8">
+            <img src="/fortyeightaiteam.ico" alt="FortyEight AI Team" className="h-8 w-8 mr-3" />
+            <h1 className="text-3xl font-bold text-gray-900">Automation Console</h1>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -70,7 +83,7 @@ export default function AutomateConsole() {
                   Sending...
                 </>
               ) : (
-                "Send to Automate"
+                "Send to Automate 48"
               )}
             </button>
           </form>
@@ -81,6 +94,20 @@ export default function AutomateConsole() {
             </div>
           )}
         </div>
+
+        {responseOutput && (
+          <div className="mt-6 bg-white rounded-lg shadow-md p-8">
+            <div className="flex items-center mb-4">
+              <img src="/fortyeightaiteam.ico" alt="FortyEight AI Team" className="h-6 w-6 mr-2" />
+              <h2 className="text-xl font-semibold text-gray-900">Automation Response</h2>
+            </div>
+            <div className="bg-gray-50 rounded-md p-4 border">
+              <pre className="whitespace-pre-wrap text-sm text-gray-800 font-mono leading-relaxed">
+                {responseOutput}
+              </pre>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
