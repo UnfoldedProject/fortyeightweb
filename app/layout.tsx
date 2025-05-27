@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     images: ["/canva-forty-eight-web-logo.png"],
   },
   icons: {
-    icon: "/forty-eight-web.ico",
+    icon: "/fortyeightaiteam.ico",
   },
     generator: 'v0.dev'
 }
